@@ -1,0 +1,24 @@
+name: Generate Documents
+
+on:
+  push:
+    branches:
+      - main
+      - tmp
+
+permissions:
+  contents: write
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+      - name: aaa
+        uses: dbgso/githubactions-asciidoc@tmp
+        with:
+            github_token: ${{ secrets.GITHUB_TOKEN }}
+            asciidoc_file_path: "./tables.adoc"
+            output_directory: "./publish"
+            asciidoc_attributes: "-a toc=left "

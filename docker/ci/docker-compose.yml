@@ -1,0 +1,8 @@
+# krokiサーバを起動するdocker-compose.ymlを作成
+
+version: "3.7"
+services:
+  kroki:
+    image: yuzutech/kroki
+    ports:
+      - 8000:8000

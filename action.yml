@@ -1,0 +1,45 @@
+name:  Publish asciidoctor Document To GitHub Pages
+description: convert asciidoctor and publish to github pages
+
+inputs:
+  github_token:
+    description: GitHub token
+    required: true
+  asciidoc_file_path:
+    description: path for asciidoc file
+    required: true
+  output_directory:
+    description: path for output directory
+    required: true
+  asciidoc_attributes:
+    description: attributes for asciidoc
+    required: true
+
+runs:
+    using: composite
+    steps:
+        - name: Use Node.js 20.x
+          uses: actions/setup-node@v3
+          with:
+            node-version: 20.x
+            cache: 'npm'
+        - name: up kroki server
+          run: docker-compose up -d kroki
+          working-directory: ./docker/ci
+          shell: bash
+        - run: npm ci
+          shell: bash
+        - run: mkdir -p publish
+          shell: bash
+        - run: sleep 10
+          shell: bash
+        - run: npx asciidoctor ${{ inputs.asciidoc_file_path }} -r asciidoctor-kroki ${{ inputs.asciidoc_attributes }} -a kroki-fetch-diagram=true -a imagesdir=images -a kroki-server-url=http://localhost:8000 -o index.html
+          shell: bash
+          working-directory: ${{ inputs.output_directory}}
+        - run: node index.js
+          shell: bash
+        - name: Deploy
+          uses: peaceiris/actions-gh-pages@v3
+          with:
+            github_token: ${{ inputs.github_token }}
+            publish_dir: ./publish
