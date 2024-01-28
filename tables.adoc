@@ -16,12 +16,21 @@ entity "users\nユーザ" as User {
 entity "teams\nチーム" as Team {
 + id [PK] : String 
 --
+  # companyId : [FK] Company
+  * created_at : DateTime
+  * updated_at : DateTime
+}
+
+entity "companies\n企業" as Company {
++ id [PK] : String 
+--
   * created_at : DateTime
   * updated_at : DateTime
 }
 
 ' Relations
 User }o--o| Team
+Team }o--o| Company
 ' ManyToMany Relations
 ' enum relations
 @enduml
@@ -58,6 +67,7 @@ entity "users\nユーザ" as User {
 entity "teams\nチーム" as Team {
 + id [PK] : String 
 --
+  # companyId : [FK] Company
   * created_at : DateTime
   * updated_at : DateTime
 }
@@ -79,6 +89,7 @@ User }o--o| Team
 |====
 Name,Type,Default,Nullable,Children,Parent,Comment
 "id","String","uuid","false","link:#users[users]",,""
+"companyId","String","","true","",link:#companies[companies],""
 "created_at","DateTime","now","false","",,""
 "updated_at","DateTime","","false","",,""
 |====
@@ -99,12 +110,62 @@ entity "users\nユーザ" as User {
 entity "teams\nチーム" as Team {
 + id [PK] : String 
 --
+  # companyId : [FK] Company
+  * created_at : DateTime
+  * updated_at : DateTime
+}
+
+entity "companies\n企業" as Company {
++ id [PK] : String 
+--
   * created_at : DateTime
   * updated_at : DateTime
 }
 
 ' Relations
 User }o--o| Team
+Team }o--o| Company
+' ManyToMany Relations
+' enum relations
+@enduml
+....
+[[companies]]
+== companies
+
+=== Description
+企業
+
+=== Columns
+[format="csv", options="header, autowidth"]
+|====
+Name,Type,Default,Nullable,Children,Parent,Comment
+"id","String","uuid","false","link:#teams[teams]",,""
+"created_at","DateTime","now","false","",,""
+"updated_at","DateTime","","false","",,""
+|====
+
+=== ER diagram
+[plantuml,target=Company,format=svg]
+....
+@startuml Company
+skinparam linetype ortho
+entity "teams\nチーム" as Team {
++ id [PK] : String 
+--
+  # companyId : [FK] Company
+  * created_at : DateTime
+  * updated_at : DateTime
+}
+
+entity "companies\n企業" as Company {
++ id [PK] : String 
+--
+  * created_at : DateTime
+  * updated_at : DateTime
+}
+
+' Relations
+Team }o--o| Company
 ' ManyToMany Relations
 ' enum relations
 @enduml

@@ -453,6 +453,13 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_er_diagram_3">ER diagram</a></li>
 </ul>
 </li>
+<li><a href="#companies">companies</a>
+<ul class="sectlevel2">
+<li><a href="#_description_3">Description</a></li>
+<li><a href="#_columns_3">Columns</a></li>
+<li><a href="#_er_diagram_4">ER diagram</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -462,7 +469,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="sectionbody">
 <div class="imageblock kroki">
 <div class="content">
-<img src="images/erd-5e0665e4ac84481fef5c410e6b46bec90aa9912b.svg" alt="erd">
+<img src="images/erd-0625eb9330e01f18504bc824f7ed104b5e7c5b10.svg" alt="erd">
 </div>
 </div>
 </div>
@@ -543,7 +550,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h3 id="_er_diagram_2">ER diagram</h3>
 <div class="imageblock kroki">
 <div class="content">
-<img src="images/User-5e0665e4ac84481fef5c410e6b46bec90aa9912b.svg" alt="User">
+<img src="images/User-9a33686dcbb115bf533ca409485e62d1890a8511.svg" alt="User">
 </div>
 </div>
 </div>
@@ -592,6 +599,15 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">companyId</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">true</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#companies">companies</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">created_at</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">DateTime</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">now</p></td>
@@ -616,7 +632,80 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <h3 id="_er_diagram_3">ER diagram</h3>
 <div class="imageblock kroki">
 <div class="content">
-<img src="images/Team-5e0665e4ac84481fef5c410e6b46bec90aa9912b.svg" alt="Team">
+<img src="images/Team-0625eb9330e01f18504bc824f7ed104b5e7c5b10.svg" alt="Team">
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="companies">companies</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_description_3">Description</h3>
+<div class="paragraph">
+<p>企業</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_columns_3">Columns</h3>
+<table class="tableblock frame-all grid-all fit-content">
+<colgroup>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+<col>
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Type</th>
+<th class="tableblock halign-left valign-top">Default</th>
+<th class="tableblock halign-left valign-top">Nullable</th>
+<th class="tableblock halign-left valign-top">Children</th>
+<th class="tableblock halign-left valign-top">Parent</th>
+<th class="tableblock halign-left valign-top">Comment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">id</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">String</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uuid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="#teams">teams</a></p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">created_at</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DateTime</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">now</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">updated_at</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DateTime</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">false</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_er_diagram_4">ER diagram</h3>
+<div class="imageblock kroki">
+<div class="content">
+<img src="images/Company-79783830e5702eedd0c421275bbe654a913f4ef2.svg" alt="Company">
 </div>
 </div>
 </div>
