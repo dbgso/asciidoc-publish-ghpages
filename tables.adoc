@@ -1,0 +1,111 @@
+:toc: left
+:nofooter:
+== ER diagram
+[plantuml,target=erd,format=svg]
+....
+@startuml erd
+skinparam linetype ortho
+entity "users\nユーザ" as User {
++ id [PK] : String 
+--
+  # teamId : [FK] Team
+  * created_at : DateTime
+  * updated_at : DateTime
+}
+
+entity "teams\nチーム" as Team {
++ id [PK] : String 
+--
+  * created_at : DateTime
+  * updated_at : DateTime
+}
+
+' Relations
+User }o--o| Team
+' ManyToMany Relations
+' enum relations
+@enduml
+....
+[[users]]
+== users
+
+=== Description
+ユーザ
+
+=== Columns
+[format="csv", options="header, autowidth"]
+|====
+Name,Type,Default,Nullable,Children,Parent,Comment
+"id","String","uuid","false","",,""
+"teamId","String","","true","",link:#teams[teams],""
+"created_at","DateTime","now","false","",,""
+"updated_at","DateTime","","false","",,""
+|====
+
+=== ER diagram
+[plantuml,target=User,format=svg]
+....
+@startuml User
+skinparam linetype ortho
+entity "users\nユーザ" as User {
++ id [PK] : String 
+--
+  # teamId : [FK] Team
+  * created_at : DateTime
+  * updated_at : DateTime
+}
+
+entity "teams\nチーム" as Team {
++ id [PK] : String 
+--
+  * created_at : DateTime
+  * updated_at : DateTime
+}
+
+' Relations
+User }o--o| Team
+' ManyToMany Relations
+' enum relations
+@enduml
+....
+[[teams]]
+== teams
+
+=== Description
+チーム
+
+=== Columns
+[format="csv", options="header, autowidth"]
+|====
+Name,Type,Default,Nullable,Children,Parent,Comment
+"id","String","uuid","false","link:#users[users]",,""
+"created_at","DateTime","now","false","",,""
+"updated_at","DateTime","","false","",,""
+|====
+
+=== ER diagram
+[plantuml,target=Team,format=svg]
+....
+@startuml Team
+skinparam linetype ortho
+entity "users\nユーザ" as User {
++ id [PK] : String 
+--
+  # teamId : [FK] Team
+  * created_at : DateTime
+  * updated_at : DateTime
+}
+
+entity "teams\nチーム" as Team {
++ id [PK] : String 
+--
+  * created_at : DateTime
+  * updated_at : DateTime
+}
+
+' Relations
+User }o--o| Team
+' ManyToMany Relations
+' enum relations
+@enduml
+....
