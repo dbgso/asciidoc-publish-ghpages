@@ -22,7 +22,7 @@ runs:
           uses: actions/setup-node@v3
           with:
             node-version: 20.x
-            cache: 'npm'
+            # cache: 'npm'
         - name: up kroki server
           run: docker-compose up -d kroki
           working-directory: ./docker/ci
